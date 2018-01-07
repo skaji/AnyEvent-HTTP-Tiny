@@ -48,10 +48,10 @@ sub __make_response {
         success  => $hash->{Status} =~ /^2/ ? 1 : 0,
         reason   => $hash->{Reason},
         status   => $hash->{Status},
-        protocol => "HTTP/" . $hash->{HTTPVersion},
         url      => $hash->{URL},
         headers  => \%headers,
         content  => $data,
+        $hash->{HTTPVersion} ? (protocol => "HTTP/" . $hash->{HTTPVersion}) : (),
     };
 }
 
